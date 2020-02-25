@@ -8,31 +8,31 @@
 
 import UIKit
 
-
-enum MathOperation: Int {
-    case divide = 11, multy, minus, plus
-}
-
 class ViewController: UIViewController {
-
+    
+    // MARK: - Values
     //число на экране
     var numberOnScreen: Double = 0
-    //предыдущие числа
+    //предыдущее число
     var previousNumber: Double = 0
-    //
+    //проверка что на экране символ операции
     var performingMath = true
     //операция
-    var operation: MathOperation? = nil
+    var operation: MathOperation?
     
+    //var model: MathOperationModel = MathOperationModel()
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var label: UILabel!
     
+    // MARK: - IBActions
     //функция для чисел
     @IBAction func numbers(_ sender: UIButton) {
-         if performingMath == true {
+        if performingMath == true {
             label.text = String(sender.tag)
             numberOnScreen = Double(label.text!)!
             performingMath = false
-         }else {
+        }else {
             label.text = label.text! + String(sender.tag)
             numberOnScreen = Double(label.text!)!
         }
@@ -41,55 +41,25 @@ class ViewController: UIViewController {
     //функция для операций с числами
     @IBAction func buttons(_ sender: UIButton) {
         previousNumber = Double(label.text!)!
-        operation = MathOperation.init(rawValue: sender.tag)
+        operation = MathOperation(rawValue: sender.tag)
         performingMath = true
-        switch operation {
-            case .divide: //divide
-                label.text = "/"
-            case .multy: //multiply
-                label.text = "x"
-            case .minus: //minus
-                label.text = "-"
-            case .plus: //plus
-                label.text = "+"
-            default:
-                break
-        }
+        label.text = operation!.description
     }
-    
-    
-    
+    //result
     @IBAction func calc(_ sender: UIButton) {
-        switch operation {
-        case .divide: //divide
-                label.text = String(previousNumber / numberOnScreen)
-        case .multy: //multiply
-                label.text = String(previousNumber * numberOnScreen)
-        case .minus: //minus
-                label.text = String(previousNumber - numberOnScreen)
-        case .plus: //plus
-                label.text = String(previousNumber + numberOnScreen)
-            default:
-                break
-        }
+        label.text = String(operation!.result(previousNumber, numberOnScreen))
     }
     
-    //очищение
+    //clear
     @IBAction func clear(_ sender: UIButton) {
-        label.text = ""
+        label.text = "0"
         previousNumber = 0
         numberOnScreen = 0
-        operation = nil
+        operation = MathOperation(rawValue: 0)
         performingMath = true
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-
 }
 
 

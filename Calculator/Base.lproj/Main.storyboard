@@ -35,6 +35,11 @@
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AJN-ci-5Hg"/>
                                 </connections>
@@ -145,7 +150,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SH-dr-92e">
-                                <rect key="frame" x="0.0" y="44" width="414" height="171"/>
+                                <rect key="frame" x="0.0" y="44" width="384" height="171"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -255,7 +260,7 @@
                             <constraint firstItem="R3c-QP-eCy" firstAttribute="top" secondItem="RjI-Qv-icK" secondAttribute="bottom" constant="2" id="0Pw-It-jzk"/>
                             <constraint firstItem="JCl-uj-N9x" firstAttribute="top" secondItem="6Ed-Wv-9Oc" secondAttribute="bottom" constant="1" id="1BO-fU-vvE"/>
                             <constraint firstItem="2Ss-jH-wt1" firstAttribute="width" secondItem="JCl-uj-N9x" secondAttribute="width" id="1r7-61-RdP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5SH-dr-92e" secondAttribute="trailing" id="48G-fN-KIx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5SH-dr-92e" secondAttribute="trailing" constant="30" id="48G-fN-KIx"/>
                             <constraint firstItem="fPa-D0-u9b" firstAttribute="height" secondItem="RjI-Qv-icK" secondAttribute="height" id="4Qu-bn-BkU"/>
                             <constraint firstItem="Cbk-bf-9y2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4fo-Fe-1B1"/>
                             <constraint firstItem="xh6-aq-aI3" firstAttribute="leading" secondItem="R3c-QP-eCy" secondAttribute="trailing" constant="2" id="4he-hw-wDP"/>

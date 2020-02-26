@@ -11,14 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - Values
-    //число на экране
     var numberOnScreen: Double = 0
-    //предыдущее число
     var previousNumber: Double = 0
-    //проверка что на экране символ операции
-    var performingMath = true
-    //операция
+    var needClear = true
     var operation: MathOperation?
+
     
     //var model: MathOperationModel = MathOperationModel()
     
@@ -26,23 +23,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     
     // MARK: - IBActions
-    //функция для чисел
     @IBAction func numbers(_ sender: UIButton) {
-        if performingMath == true {
+        if needClear {
             label.text = String(sender.tag)
-            numberOnScreen = Double(label.text!)!
-            performingMath = false
+            //мат выполнение
+            needClear = false
         }else {
             label.text = label.text! + String(sender.tag)
-            numberOnScreen = Double(label.text!)!
         }
+        numberOnScreen = Double(label.text!)!
     }
     
-    //функция для операций с числами
     @IBAction func buttons(_ sender: UIButton) {
-        previousNumber = Double(label.text!)!
+        if operation != nil {
+            previousNumber = operation!.result(previousNumber, numberOnScreen)
+        } else {
+            previousNumber = numberOnScreen
+        }
         operation = MathOperation(rawValue: sender.tag)
-        performingMath = true
+        needClear = true
         label.text = operation!.description
     }
     //result
@@ -56,10 +55,19 @@ class ViewController: UIViewController {
         previousNumber = 0
         numberOnScreen = 0
         operation = MathOperation(rawValue: 0)
-        performingMath = true
+        needClear = true
     }
     
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        //roundButtons()
+    }
+    
+    private func roundButtons() {
+
+    }
 }
 
 
